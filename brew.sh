@@ -28,4 +28,3 @@ CASKS=(
 brew cask install ${CASKS[@]}
 
 brew cleanup
-

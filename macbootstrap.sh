@@ -2,7 +2,7 @@
 
 # Notes:
 #   Install Xcode before running this script
-xcode-select --install
+# xcode-select --install
 
 # configs
 # turn off sticky keys, hold press function
@@ -18,4 +18,4 @@ defaults write com.apple.screencapture location ~/Desktop/Screenshots
 
 # Github
 git config --global user.name "cynful"
-git config --global user.email "cynful@email.com"
+git config --global user.email "cynthia.kwok@joinhoney.com"
