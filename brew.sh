@@ -11,6 +11,7 @@ brew update
 PACKAGES=(
     python  # python3
     google-go
+    node
 )
 # install homebrew packages
 brew install ${PACKAGES[@]}
@@ -21,10 +22,12 @@ CASKS=(
     visual-studio-code
     google-chrome
     flux
+    spectacle
     slack
     discord
     signal
 )
+# install casks
 brew cask install ${CASKS[@]}
 
 brew cleanup
