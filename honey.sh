@@ -9,10 +9,12 @@ fi
 brew update
 
 PACKAGES=(
-    python  # python3
-    google-go
+    ruby    # newer ruby
     node
     pre-commit
+    chef
+    terraform
+    kubernetes-helm
 )
 # install homebrew packages
 brew install ${PACKAGES[@]}
@@ -21,6 +23,12 @@ pip install virtualenv
 
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
 nvm install 8
+
+GEMS=(
+    bundler
+    kitchen-docker
+)
+gem install ${GEMS[@]}
 
 # paste into github.com/settings/ssh
 ssh-keygen

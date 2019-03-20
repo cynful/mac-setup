@@ -9,6 +9,7 @@
 #  5.  Process Management
 #  6.  System Operations & Information
 #  7.  Exports
+#  8.  Google Cloud SDK
 #  -------------------------------------------------------------------------
 
 
@@ -18,11 +19,12 @@
 
 # Change Prompt
 # -------------------------------------------------------------------------
-parse_git_branch() {    # get current git branch
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
-export PS1="________________________________________________________________________________\n| \u @ \h \w\[\033[32m\]\$(parse_git_branch)\[\033[00m\]\n| $ "
-export PS2="| $ "
+# https://github.com/magicmonty/bash-git-prompt
+if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+  __GIT_PROMPT_DIR=$(brew --prefix)/opt/bash-git-prompt/share
+  # GIT_PROMPT_ONLY_IN_REPO=1
+  source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
+fi
 
 # Set default blocksize for ls, df, du
 # from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
@@ -123,11 +125,34 @@ alias ttop="top -R -F -s 10 -o rsize"
 # ---------------------------------------------------------------
 alias cleanupDS="find . -type f -name '*.DS_Store' -ls -delete"
 
+# cleanupPATH:
+# --------------
+alias cleanupPATH="PATH=$(printf "%s" "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')"
 
 # ---------------------------------------
 # 7. EXPORTS
 # ---------------------------------------
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
+export PATH=$GOPATH/bin:$PATH
+export PATH=$GOROOT/bin:$PATH
+
+# ------
+# RUBY
+# ------
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+
+# ---------------------
+# 8. GOOGLE CLOUD SDK
+# ---------------------
+export NVM_DIR="/Users/cynful/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/cynful/google-cloud-sdk/path.bash.inc' ]; then . '/Users/cynful/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/cynful/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/cynful/google-cloud-sdk/completion.bash.inc'; fi
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
+

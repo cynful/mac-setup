@@ -15,10 +15,7 @@ cp .gitignore_global ~/
 
 VSCode User Settings ~/Library/Application Support/Code/User/settings.json
 
-git settings
-
 set google-chrome as default browser
 
-Move and resize windows: https://www.spectacleapp.com/
-
 Screensaver: https://fliqlo.com/#about
+

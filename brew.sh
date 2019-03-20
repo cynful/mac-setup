@@ -11,7 +11,8 @@ brew update
 PACKAGES=(
     python  # python3
     google-go
-    node
+    jq
+    yq
 )
 # install homebrew packages
 brew install ${PACKAGES[@]}

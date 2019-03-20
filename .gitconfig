@@ -1,11 +1,13 @@
 [user]
     name = cynful
-    email = cynthia.kwok@joinhoney.com
+    email = cynful@users.noreply.github.com
 [alias]
     # one-line log
     l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
 
+    s = status
     a = add
+    b = branch 
     ca = commit -a
     cm = commit -m
     cam = commit -am
@@ -13,5 +15,6 @@
     s = status -s
     co = checkout
     cob = checkout -b
+    pushf = push --force-with-lease
 
     la = "!git config -l | grep alias | cut -c 7-"
