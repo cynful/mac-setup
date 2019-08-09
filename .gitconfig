@@ -3,7 +3,7 @@
     email = cynful@users.noreply.github.com
 [alias]
     # one-line log
-    l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+    l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short -n 10
 
     s = status
     a = add
@@ -16,5 +16,13 @@
     co = checkout
     cob = checkout -b
     pushf = push --force-with-lease
+    tree = log --graph --oneline --all
 
     la = "!git config -l | grep alias | cut -c 7-"
+[core]
+	excludesfile = /Users/cynful/.gitignore_global
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
