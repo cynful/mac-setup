@@ -17,6 +17,7 @@
     cob = checkout -b
     pushf = push --force-with-lease
     tree = log --graph --oneline --all
+    prune = "!git branch | grep -v "master" | xargs git branch -D"
 
     la = "!git config -l | grep alias | cut -c 7-"
 [core]
