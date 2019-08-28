@@ -18,4 +18,4 @@ defaults write com.apple.screencapture location ~/Desktop/Screenshots
 
 # Github
 git config --global user.name "cynful"
-git config --global user.email "cynthia.kwok@joinhoney.com"
+git config --global user.email "cynful@users.noreply.github.com"
