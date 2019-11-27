@@ -9,6 +9,8 @@ fi
 brew update
 
 PACKAGES=(
+    circleci
+    kubesec
     ruby    # newer ruby
     node
     pre-commit
@@ -22,7 +24,7 @@ brew install ${PACKAGES[@]}
 pip install virtualenv
 
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
-nvm install 8
+nvm install 10
 
 GEMS=(
     bundler

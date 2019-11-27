@@ -15,7 +15,3 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 # store screenshots in subfolder instead of directly to Desktop
 mkdir ~/Desktop/Screenshots
 defaults write com.apple.screencapture location ~/Desktop/Screenshots
-
-# Github
-git config --global user.name "cynful"
-git config --global user.email "cynful@users.noreply.github.com"

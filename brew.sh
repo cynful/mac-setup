@@ -9,37 +9,31 @@ fi
 brew update
 
 PACKAGES=(
-    bash-completion
-    bash-git-prompt
     sysdig
-    python  # python3
+    python      # python3
     pipenv
-    google-go
+    go          # golang
     jq
     yq
-    skopeo  # docker
+    skopeo      # docker
     shellcheck
     yamllint
-    pre-commit
     git-lfs
+    pre-commit
     hub
-    circleci
-    kubesec
-    terraform
 )
 # install homebrew packages
 brew install ${PACKAGES[@]}
 
 brew tap caskroom/cask
 CASKS=(
-    iterm2
     visual-studio-code
     google-chrome
     flux
     spectacle
     slack
-    discord
     signal
+    discord
 )
 # install casks
 brew cask install ${CASKS[@]}
