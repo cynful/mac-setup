@@ -45,7 +45,7 @@ ZSH_THEME="bira"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -68,7 +68,7 @@ ZSH_THEME="bira"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git node npm kubectl)
+plugins=(git kubectl)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -107,7 +107,7 @@ alias ll='ls -FGlAhp'                        # Preferred 'ls' implementation
 cd () { builtin cd "$@"; ll; }               # Always list directory contents upon 'cd'
 trash () { command mv -iv "$@" ~/.Trash ; }  # trash:  Moves a file to the MacOS trash
 alias cleanupDS="find . -type f -name '*.DS_Store' -ls -delete"
-
+alias cleanupPATH="PATH=$(printf "%s" "$PATH" | awk -v RS=':' '!a[$1]++ { if (NR > 1) printf RS; printf $1 }')"
 alias ttop="top -R -F -s 10 -o rsize"        # ttop:  Recommended 'top' invocation to minimize resources
 findPid () { lsof -t -c "$@" ; }             # findPid: find out the pid of a specified process
 
