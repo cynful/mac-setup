@@ -9,28 +9,28 @@ fi
 brew update
 
 PACKAGES=(
-    circleci
     kubesec
-    ruby    # newer ruby
-    node
-    pre-commit
-    chef
-    terraform
     kubernetes-helm
+    circleci
+    terraform
+    ruby             # newer ruby
+    chef
+    nvm              # use nvm to install node
 )
 # install homebrew packages
 brew install ${PACKAGES[@]}
 
-pip install virtualenv
+brew cleanup
 
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
-nvm install 10
+pip install virtualenv
 
 GEMS=(
     bundler
     kitchen-docker
 )
 gem install ${GEMS[@]}
+
+nvm install 10
 
 # paste into github.com/settings/ssh
 ssh-keygen

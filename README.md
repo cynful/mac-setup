@@ -1,15 +1,10 @@
 # mac-setup
 
-## Dummy-proof:
-```
-cp .bash_profile ~/
-source .bash_profile
-cp *.sh ~/
-sh macbootstrap.sh
-sh brew.sh
-cp .gitignore_global ~/
-```
 ## Remember to:
+Install:
+- docker
+- google-cloud-sdk, contains kubectl
+
 [//]: # (todo: automate this)
 [VSCode Extensions](./vscode.ext)
 
