@@ -25,6 +25,9 @@ PACKAGES=(
 # install homebrew packages
 brew install ${PACKAGES[@]}
 
+brew tap instrumenta/instrumenta
+brew install kubeval
+
 brew tap caskroom/cask
 CASKS=(
     visual-studio-code
