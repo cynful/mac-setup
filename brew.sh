@@ -9,31 +9,25 @@ fi
 brew update
 
 PACKAGES=(
-    sysdig
-    python      # python3
     pipenv
-    go          # golang
+    go
     jq
     yq
-    skopeo      # docker
+    skopeo
     shellcheck
     yamllint
-    git-lfs
     pre-commit
     hub
 )
 # install homebrew packages
 brew install ${PACKAGES[@]}
 
-brew tap instrumenta/instrumenta
-brew install kubeval
-
 brew tap caskroom/cask
 CASKS=(
     visual-studio-code
     google-chrome
     flux
-    spectacle
+    rectangle
     slack
     signal
     discord

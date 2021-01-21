@@ -7,7 +7,7 @@ export ZSH="/Users/cynful/.oh-my-zsh"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# See htps://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="bira"
 
 # Set list of themes to pick from when loading at random
@@ -59,6 +59,9 @@ COMPLETION_WAITING_DOTS="true"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000000
+SAVEHIST=$HISTSIZE
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -80,11 +83,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='mvim'
-fi
+# if [[ -n $SSH_CONNECTION ]]; then
+export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -97,7 +100,14 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias which='type -all'                      # which:  Find executables
+
+gpr () {
+    git pull --rebase origin $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
+}
+gri () {
+    git rebase -i origin/$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
+}
+alias which='which -a'                       # which:  Find executables
 alias path='echo -e ${PATH//:/\\n}'          # path:   Echo all executable Paths
 alias cp='cp -iv'                            # Preferred 'cp' implementation
 alias mv='mv -iv'                            # Preferred 'mv' implementation
@@ -122,6 +132,8 @@ fuckingwifi () {                             # thanks @jacobmoyle
     networksetup -setairportpower en0 on
 }
 
+alias whatsmyip='curl ifconfig.co'
+
 genpwd () {
     if [ -z "$1" ]
     then
@@ -132,9 +144,24 @@ genpwd () {
     LC_CTYPE=C tr -dc 'A-Za-z0-9_!@#$%^&*' < /dev/urandom | head -c ${length} | xargs
 }
 
-alias tf='terraform'
+##### Brew installation post commands
+export GOPATH=$(go env GOPATH)
+export PATH=$PATH:$(go env GOPATH)/bin
 
-# gcloud autocompletion
-CLOUD_SDK_HOME=$HOME/google-cloud-sdk
-source "${CLOUD_SDK_HOME}/path.zsh.inc"
-source "${CLOUD_SDK_HOME}/completion.zsh.inc"
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+export PATH=$PATH:$NVM_DIR
+
+# # terraform
+# alias tf='terraform'
+# alias tfaa='terraform apply -auto-approve'
+
+# # gcloud
+# alias gcred='gcloud container clusters get-credentials --project'
+
+# # The next line updates PATH for the Google Cloud SDK.
+# if [ -f '/Users/cynful/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/cynful/google-cloud-sdk/path.zsh.inc'; fi
+
+# # The next line enables shell command completion for gcloud.
+# if [ -f '/Users/cynful/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/cynful/google-cloud-sdk/completion.zsh.inc'; fi

@@ -10,7 +10,4 @@ Install:
 
 VSCode User Settings ~/Library/Application Support/Code/User/settings.json
 
-set google-chrome as default browser
-
 Screensaver: https://fliqlo.com/#about
-

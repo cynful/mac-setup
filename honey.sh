@@ -22,16 +22,8 @@ brew install ${PACKAGES[@]}
 
 brew cleanup
 
-pip install virtualenv
-
 GEMS=(
     bundler
     kitchen-docker
 )
 gem install ${GEMS[@]}
-
-nvm install 10
-
-# paste into github.com/settings/ssh
-ssh-keygen
-cat ~/.ssh/id_rsa.pub | pbcopy
