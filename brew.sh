@@ -36,3 +36,5 @@ CASKS=(
 brew cask install ${CASKS[@]}
 
 brew cleanup
+
+cp settings.json ~/Library/Application Support/Code/User/settings.json
